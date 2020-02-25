@@ -4,12 +4,12 @@ import 'package:restofood_api/ui/screens/home_screeen.dart';
 import 'package:restofood_api/ui/screens/profile_screen.dart';
 
 
-class DashboardScreen extends StatefulWidget {
+class DashBoardScreen extends StatefulWidget {
   @override
-  _DashboardScreenState createState() => _DashboardScreenState();
+  _DashBoardScreenState createState() => _DashBoardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _DashBoardScreenState extends State<DashBoardScreen> {
    //Selected index page
   int selectedIndex = 0;
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restofood_api/ui/screens/dashboard_screen.dart';
-
-import 'package:restofood_api/ui/screens/home_screeen.dart';
 import 'package:restofood_api/ui/screens/login_screen.dart';
+
+import 'ui/screens/dashboard_screen.dart';
 
 void main() => runApp(MyApp());
 
