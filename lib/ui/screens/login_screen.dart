@@ -21,15 +21,30 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class LoginBody extends StatelessWidget {
+class LoginBody extends StatefulWidget {
+  @override
+  _LoginBodyState createState() => _LoginBodyState();
+}
+
+class _LoginBodyState extends State<LoginBody> {
   var usernameController = TextEditingController();
   var passwordController = TextEditingController();
 
+  
+  bool _isHidePassw = true;
+
+   showHidePassword() {
+    setState(() {
+      _isHidePassw = !_isHidePassw;
+    });
+  }
+
   void login(BuildContext context) {
-    if(usernameController.text.isNotEmpty && passwordController.text.isNotEmpty){
-      Navigator.pushNamedAndRemoveUntil(context, "/dashboard", (Route<dynamic>routes) => false);
-    
-    }else{
+    if (usernameController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, "/dashboard", (Route<dynamic> routes) => false);
+    } else {
       ToastUtils.show("Silahkan isi semua field");
     }
   }
@@ -67,55 +82,77 @@ class LoginBody extends StatelessWidget {
           )),
         ),
         //Bagian field Login
-        Padding(padding: EdgeInsets.only(left: 20, right: 20, top: 30),
-      child: Column(
-        children: <Widget>[
-          //Username
-          InputField(
-            action: TextInputAction.done,
-            type: TextInputType.text,
-            controller: usernameController,
-            hintText: 'Username',
-          ),
-          SizedBox(height: 10,),
-           //Password
-          InputField(
-            action: TextInputAction.done,
-            type: TextInputType.text,
-            controller: passwordController,
-            hintText: 'Password',
-            secureText: true,
-          ),
-          SizedBox(height: 15,),
-          //UNTUK BUTTON
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 45,
-            child: PrimaryButton(
-              color: Colors.orange,
-              text: 'Login',
-              onClick: () => login(context),
-            )
-          ),
+        Padding(
+          padding: EdgeInsets.only(left: 20, right: 20, top: 30),
+          child: Column(
+            children: <Widget>[
+              //Username
+              InputField(
+                action: TextInputAction.done,
+                type: TextInputType.text,
+                controller: usernameController,
+                hintText: 'Username',
+               
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              //Password
+              InputField(
+                action: TextInputAction.done,
+                type: TextInputType.text,
+                controller: passwordController,
+                hintText: 'Password',
+                secureText: _isHidePassw,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(_isHidePassw ? Icons.visibility_off : Icons.visibility, color: Colors.orange[200],  ), 
+                  onPressed: (){
+                    showHidePassword();
+                  })
+                ),
+              ),
+              
+              SizedBox(
+                height: 15,
+              ),
+              //UNTUK BUTTON
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 45,
+                  child: PrimaryButton(
+                    color: Colors.orange,
+                    text: 'Login',
+                    onClick: () => login(context),
+                  )),
 
-          // add button press & call register class route
-          SizedBox(height: 10,),
-          InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(
-              builder: (context) => RegisterScreen()
-            )),
-            child: Text("Belum ada akun? Daftar !", 
-            style: TextStyle(fontSize: 14,color: Colors.black87),
-            ),
-          )
-          // akhir add call register class
-        ],
-      ),)
+              // add button press & call register class route
+              SizedBox(
+                height: 10,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text('Belum ada akun?',
+                style: TextStyle(fontSize: 14, color: Colors.black54)),
+                  InkWell(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen())),
+                    child: Text(
+                      " Daftar disini!",
+                      style: TextStyle(fontSize: 16, color: Colors.blue[200]),
+                    ),
+                  ),
+                ],
+              )
+              // akhir add call register class
+            ],
+          ),
+        )
       ],
     );
   }
 }
-
 
 //JEJO JEPRI UPDATE LOGIN NEW
 
@@ -178,8 +215,8 @@ class LoginBody extends StatelessWidget {
 //                 Text(
 //                   "Restofood",
 //                   style: TextStyle(
-//                     fontSize: 35, 
-//                     color: Colors.white, 
+//                     fontSize: 35,
+//                     color: Colors.white,
 //                     fontWeight: FontWeight.bold
 //                   ),
 //                 )
@@ -233,9 +270,7 @@ class LoginBody extends StatelessWidget {
 //           ),
 //         )
 
-
 //       ],
 //     );
 //   }
 // }
-
