@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restofood_api/ui/screens/cart_screen.dart';
-import 'package:restofood_api/ui/screens/home_screeen.dart';
+import 'package:restofood_api/ui/screens/home_screen.dart';
 import 'package:restofood_api/ui/screens/profile_screen.dart';
 
 
