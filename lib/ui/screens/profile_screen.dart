@@ -18,6 +18,8 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class ProfileBody extends StatelessWidget {
+  ProfileBody({this.username});
+  final String username;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,7 +48,8 @@ class ProfileBody extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Yusril Rapsanjani",
+                //  "JeJo-Jepri",
+                username,
                   style: TextStyle(
                     fontSize: 25, 
                     color: Colors.white, 
@@ -92,7 +95,7 @@ class ProfileBody extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Asal Kota: Jakarta\nUmur: 21\nHobby: Programming, Watching Movie",
+                          "Asal Kota: Depok\nUmur: 32thn\nHobby: Programming, Watching Movie",
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(

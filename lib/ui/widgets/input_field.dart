@@ -8,7 +8,9 @@ class InputField extends StatelessWidget {
   final bool secureText;
   final bool readOnly;
   final Function onTap;
-  final InputDecoration decoration;
+   final IconButton icon;
+  //  final InputDecoration decoration;
+  //  final bool obcureText;
 
   InputField({
       this.controller,
@@ -17,8 +19,11 @@ class InputField extends StatelessWidget {
       this.type,
       this.secureText = false,
       this.readOnly = false,
-      this.onTap,
-      this.decoration});
+      this.onTap
+       ,this.icon
+      //  ,this.decoration
+      //  ,this.obcureText
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +45,7 @@ class InputField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             border: InputBorder.none
+            ,suffixIcon: icon
           ),
         ),),
     );

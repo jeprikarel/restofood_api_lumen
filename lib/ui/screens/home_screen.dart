@@ -73,9 +73,9 @@ class _ListFoodState extends State<ListFood> {
   List<FoodModel> foods;
 
   void loadData() async {
- //   print('Tess');
+    print('Tess');
     var _foods = await FoodServices.getAll();
-  //  print(_foods.toString());
+    print(_foods.toString());
     setState(() {
       foods = _foods;
     });
